@@ -26,6 +26,7 @@ jobs:
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda update -y conda
+            cd $CIRCLE_WORKING_DIRECTORY/src/fringe
             conda env create -f environment.yml
             conda activate fringe 
             conda install gxx_linux-64
@@ -43,13 +44,12 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-            ls src
+            cd $CIRCLE_WORKING_DIRECTORY
             mkdir install build
-            - checkout src
-            cd build
+            cd $CIRCLE_WORKING_DIRECTORY/build
             CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe
             make all
             make install
-            cd ~
             export PYTHONPATH=$PYTHONPATH:~/install/python
             export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/install/lib
+            cd $CIRCLE_WORKING_DIRECTORY
