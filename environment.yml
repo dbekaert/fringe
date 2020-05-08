@@ -1,0 +1,17 @@
+# create environment : conda env create -f environment.yml
+# update dependencies: conda env update -f environment.yml
+# remove environment : conda env remove -n fringe
+# enter  environment : conda activate fring
+# exit   environment : conda deactivate
+name: fringe
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - cython
+  - clangxx_osx-64
+  - gdal
+  - libgdal
+  - armadillo
+  - isce2

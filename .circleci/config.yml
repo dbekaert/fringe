@@ -1,0 +1,34 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: ubuntu:bionic
+    environment:
+      PYTHON_VERSION: 3.7.1
+    steps:
+      - checkout
+      - run:
+          name: Setup Miniconda
+          command: |
+            apt update
+            apt install -y wget
+            apt-get update --yes && apt-get upgrade --yes
+            apt-get install g++ --yes
+            cd $HOME
+            wget "https://repo.anaconda.com/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh" -O miniconda.sh
+            printf '%s' "8a324adcc9eaf1c09e22a992bb6234d91a94146840ee6b11c114ecadafc68121  miniconda.sh" | sha256sum -c
+            bash miniconda.sh -b -p $HOME/miniconda
+      - run:
+          name: Setup environment and run tests
+          command: |
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/etc/profile.d/conda.sh
+            conda update -y conda
+            conda env create -f environment.yml
+            conda install -c anaconda git
+            conda install -c anaconda wget
+            conda activate fringe 
+            python --version
+            python -c "import numpy; print(numpy.__version__)"
+            python -c "import pyproj; print(pyproj.__version__)"
