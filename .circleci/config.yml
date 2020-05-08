@@ -42,7 +42,8 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-            mkdir install build src
+            ls src
+            mkdir install build
             - checkout src
             cd build
             CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe
