@@ -13,10 +13,6 @@ jobs:
       - run:
           name: Setup Miniconda
           command: |
-            ls /root/project/src
-      - run:
-          name: Setup Miniconda
-          command: |
             apt update
             apt install -y wget
             apt-get update --yes && apt-get upgrade --yes
@@ -31,6 +27,7 @@ jobs:
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda update -y conda
+            cd /root/project/src 
             conda env create -f environment.yml
             conda activate fringe 
             conda install gxx_linux-64
@@ -48,12 +45,11 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-            cd ~
+            cd /root/project/
             mkdir install build
             cd build
-            CXX=${CXX} cmake -DCMAKE_INSTALL_PREFIX=../install $CIRCLE_WORKING_DIRECTORY
+            CXX=${CXX} cmake -DCMAKE_INSTALL_PREFIX=../install ../src
             make all
             make install
             export PYTHONPATH=$PYTHONPATH:~/install/python
             export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/install/lib
-            cd $CIRCLE_WORKING_DIRECTORY
