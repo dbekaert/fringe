@@ -36,11 +36,19 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-            topsApp.py -h
       - run:
           name: Install Fringe and test Fringe
           command: |
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-
+            mkdir install build src
+            - checkout src
+            cd build
+            CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe
+            make all
+            make install
+            cd ~
+            export PYTHONPATH=$PYTHONPATH:~/install/python
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/install/lib
+> git clone https://github.com/isce-framework/fringe.git
