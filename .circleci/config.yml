@@ -7,7 +7,7 @@ jobs:
     environment:
       PYTHON_VERSION: 3.7.1
     steps:
-      -run:
+      - run:
           name: Update PATH and Define Environment Variable at Runtime
           command: |
             echo 'export working_directory=$HOME/src' >> $BASH_ENV
