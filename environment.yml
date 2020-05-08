@@ -9,7 +9,7 @@ channels:
   - defaults
 dependencies:
   - cmake
-  = python
+  - python
   - cython
   - gdal
   - libgdal
