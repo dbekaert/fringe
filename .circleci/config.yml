@@ -6,12 +6,8 @@ jobs:
       - image: ubuntu:bionic
     environment:
       PYTHON_VERSION: 3.7.1
+      working_directory: $HOME/src
     steps:
-      - run:
-          name: Update PATH and Define Environment Variable at Runtime
-          command: |
-            echo 'export working_directory=$HOME/src' >> $BASH_ENV
-            source $BASH_ENV
       - checkout
       - run:
           name: Setup Miniconda
