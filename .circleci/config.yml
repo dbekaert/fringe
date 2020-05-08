@@ -7,7 +7,8 @@ jobs:
     environment:
       PYTHON_VERSION: 3.7.1
     steps:
-      - checkout src
+      - checkout:
+            path: $CIRCLE_WORKING_DIRECTORY/src
       - run:
           name: Setup Miniconda
           command: |
