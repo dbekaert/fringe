@@ -45,7 +45,7 @@ jobs:
             cd ~
             mkdir install build
             cd build
-            CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install $CIRCLE_WORKING_DIRECTORY
+            CXX=${CXX} cmake -DCMAKE_INSTALL_PREFIX=../install $CIRCLE_WORKING_DIRECTORY
             make all
             make install
             export PYTHONPATH=$PYTHONPATH:~/install/python
