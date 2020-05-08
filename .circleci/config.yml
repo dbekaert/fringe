@@ -51,4 +51,3 @@ jobs:
             cd ~
             export PYTHONPATH=$PYTHONPATH:~/install/python
             export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/install/lib
-> git clone https://github.com/isce-framework/fringe.git
