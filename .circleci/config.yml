@@ -7,7 +7,7 @@ jobs:
     environment:
       PYTHON_VERSION: 3.7.1
     steps:
-      - checkout:
+      - checkout
       - run:
           name: Setup Miniconda
           command: |
