@@ -34,5 +34,14 @@ jobs:
       - run:
           name: Install ISCE and test ISCE
           command: |
+            source $HOME/miniconda/etc/profile.d/conda.sh
+            conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
             topsApp.py -h
+      - run:
+          name: Install Fringe and test Fringe
+          command: |
+            source $HOME/miniconda/etc/profile.d/conda.sh
+            conda activate fringe
+            export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
+
