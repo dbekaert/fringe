@@ -8,7 +8,6 @@ jobs:
       PYTHON_VERSION: 3.7.1
     steps:
       - checkout:
-            path: $CIRCLE_WORKING_DIRECTORY/src/fringe
       - run:
           name: Setup Miniconda
           command: |
@@ -26,7 +25,6 @@ jobs:
             export PATH="$HOME/miniconda/bin:$PATH"
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda update -y conda
-            cd $CIRCLE_WORKING_DIRECTORY/src/fringe
             conda env create -f environment.yml
             conda activate fringe 
             conda install gxx_linux-64
@@ -44,10 +42,10 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda activate fringe
             export PATH="$ISCE_HOME/bin:$ISCE_HOME/applications:$PATH"
-            cd $CIRCLE_WORKING_DIRECTORY
+            cd ~
             mkdir install build
-            cd $CIRCLE_WORKING_DIRECTORY/build
-            CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install ../src/fringe
+            cd build
+            CXX=g++ cmake -DCMAKE_INSTALL_PREFIX=../install $CIRCLE_WORKING_DIRECTORY
             make all
             make install
             export PYTHONPATH=$PYTHONPATH:~/install/python
