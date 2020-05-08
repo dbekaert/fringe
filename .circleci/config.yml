@@ -4,20 +4,16 @@ jobs:
   build:
     docker:
       - image: ubuntu:bionic
-      - user: root
-
+        user: root
     environment:
       PYTHON_VERSION: 3.7.1
-
     steps:
       - checkout:
           path: /root/project/src
-
       - run:
           name: Setup Miniconda
           command: |
             ls /root/project/src
-
       - run:
           name: Setup Miniconda
           command: |
