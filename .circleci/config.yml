@@ -16,13 +16,11 @@ jobs:
       - run:
           name: Setup Miniconda
           command: |
-            set -ex
             ls /root/project/src
 
       - run:
           name: Setup Miniconda
           command: |
-            set -ex
             apt update
             apt install -y wget
             apt-get update --yes && apt-get upgrade --yes
