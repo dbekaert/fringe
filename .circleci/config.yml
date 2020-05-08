@@ -8,7 +8,7 @@ jobs:
       PYTHON_VERSION: 3.7.1
     steps:
       - checkout:
-            path: $CIRCLE_WORKING_DIRECTORY/src
+            path: $CIRCLE_WORKING_DIRECTORY/src/fringe
       - run:
           name: Setup Miniconda
           command: |
