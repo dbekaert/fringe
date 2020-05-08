@@ -26,9 +26,8 @@ jobs:
             source $HOME/miniconda/etc/profile.d/conda.sh
             conda update -y conda
             conda env create -f environment.yml
-            conda install -c anaconda git
-            conda install -c anaconda wget
             conda activate fringe 
+            conda install gxx_linux-64
             python --version
             python -c "import numpy; print(numpy.__version__)"
       - run:

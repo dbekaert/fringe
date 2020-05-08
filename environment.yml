@@ -8,9 +8,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python
+  - cmake
+  = python
   - cython
-  - clangxx_osx-64
   - gdal
   - libgdal
   - armadillo
