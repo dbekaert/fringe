@@ -4,20 +4,25 @@ jobs:
   build:
     docker:
       - image: ubuntu:bionic
+      - user: root
+
     environment:
       PYTHON_VERSION: 3.7.1
-      working_directory: $HOME/src
+
     steps:
-      - checkout
+      - checkout:
+          path: /root/project/src
+
       - run:
           name: Setup Miniconda
           command: |
-            echo $CIRCLE_WORKING_DIRECTORY
-            echo $working_directory
-            ls $working_directory
+            set -ex
+            ls /root/project/src
+
       - run:
           name: Setup Miniconda
           command: |
+            set -ex
             apt update
             apt install -y wget
             apt-get update --yes && apt-get upgrade --yes
