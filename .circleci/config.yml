@@ -31,6 +31,7 @@ jobs:
             conda env create -f environment.yml
             conda activate fringe 
             conda install gxx_linux-64
+            conda install -c anaconda make 
             echo $CXX
             python --version
             python -c "import numpy; print(numpy.__version__)"
