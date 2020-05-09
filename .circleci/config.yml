@@ -49,7 +49,7 @@ jobs:
             cd /root/project/
             mkdir install build
             cd build
-            CXX=${CXX} cmake -DCMAKE_INSTALL_PREFIX=../install ../src
+            cmake -DCMAKE_INSTALL_PREFIX=../install ../src
             make all
             make install
             export PYTHONPATH=$PYTHONPATH:~/install/python
