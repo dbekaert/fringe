@@ -16,7 +16,6 @@ jobs:
             apt update
             apt install -y wget
             apt-get update --yes && apt-get upgrade --yes
-            apt-get install g++ --yes
             cd $HOME
             wget "https://repo.anaconda.com/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh" -O miniconda.sh
             printf '%s' "8a324adcc9eaf1c09e22a992bb6234d91a94146840ee6b11c114ecadafc68121  miniconda.sh" | sha256sum -c
@@ -30,10 +29,9 @@ jobs:
             cd /root/project/src 
             conda env create -f environment.yml
             conda activate fringe 
-            conda install gxx_linux-64 
-            conda install -c conda-forge openmp 
-            conda install -c anaconda make 
-            echo $CXX
+            conda install gxx_linux-64 -y
+            conda install -c conda-forge openmp -y
+            conda install -c anaconda make -y
             python --version
             python -c "import numpy; print(numpy.__version__)"
       - run:
