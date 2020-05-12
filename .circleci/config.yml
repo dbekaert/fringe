@@ -30,7 +30,8 @@ jobs:
             cd /root/project/src 
             conda env create -f environment.yml
             conda activate fringe 
-            conda install gxx_linux-64
+            conda install gxx_linux-64 
+            conda install -c conda-forge openmp 
             conda install -c anaconda make 
             echo $CXX
             python --version
